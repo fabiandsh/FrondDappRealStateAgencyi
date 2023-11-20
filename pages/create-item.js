@@ -15,6 +15,8 @@ import Image from 'next/image';
 export default function CreateItem() {
     const [fileUrl, setFileUrl] = useState(null)
     const [formInput, updateFormInput] = useState({price: '', name: '', description:'', address:''})
+    let tokenids = 6;
+
     const router = useRouter();
 
     async function onChange(e) {
@@ -93,7 +95,9 @@ export default function CreateItem() {
           //let event = tx.events[0]
           //let value = event.args[2]
 
-          let tokenId = 1 //we need to convert it a number
+          let tokenId = tokenids //we need to convert it a number
+          console.log(tokenId)
+            tokenids++
   
           //get a reference to the price entered in the form 
           const price = ethers.parseUnits(formInput.price, 'ether')
@@ -158,7 +162,7 @@ export default function CreateItem() {
                         )
                     }
                     <button onClick={createItem}
-                     className="font-bold mt-4 bg-pink-500 text-white rounded p-4 shadow-lg"
+                     className="font-bold mt-4 bg-blue-500 text-white rounded p-4 shadow-lg"
                      >Publish my property</button>
             </div>
         </div>
